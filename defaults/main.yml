@@ -99,7 +99,7 @@ java_versions:
     java_download_url: https://download.oracle.com/otn-pub/java/jdk/8u202-b08/1961070e4c9b4e26a04e7f5a083f551e/jdk-8u202-{{ java_architecture }}.tar.gz
   8u211:
     java_long_version: 1.8.0_211
-    java_download_url: https://download.oracle.com/otn/java/jdk/8u211-b12/478a62b7d4e34b78b671c754eaaf38ab/jdk-8u211-{{ java_architecture }}.tar.gz
+    java_download_url: https://download.oracle.com/otn-pub/java/jdk/8u211-b12/478a62b7d4e34b78b671c754eaaf38ab/jdk-8u211-{{ java_architecture }}.tar.gz
 jce_versions:
   '7':
     jce_file_base: UnlimitedJCEPolicy
