@@ -1,4 +1,11 @@
 ---
+- name: ensure the download_path
+  file:
+    path: "{{ java_download_path }}"
+    mode: 0755
+    owner: root
+    group: root
+    state: directory
 
 - name: download Java 
   get_url:
