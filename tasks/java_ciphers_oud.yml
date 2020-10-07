@@ -1,0 +1,22 @@
+#
+# The ciphers are needed for EUS validations from DB to OUD
+# These will be applied for hosts with oud in it
+# Ref - Oracle Note for recommendation - 
+# https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=300803465168389&id=2397791.1&displayIndex=4&_afrWindowMode=0&_adf.ctrl-state=toc4nrp7f_165#FIX
+# MOS Note: OUD 12c - EUS Integration Failing with Message "no cipher suites in common" (Doc ID 2397791.1)
+
+- name: backup of the java.security file
+  copy:
+    src: "{{ java_real_home}}/jre/lib/security/java.security"
+    dest: "{{ java_real_home}}/jre/lib/security/java.security_bkp_{{ ansible_date_time.date }}"
+    remote_src: yes
+    mode: preserve
+  when: "'oud' in inventory_hostname"
+
+- name: replace the ciphers
+  replace:
+    path: "{{ java_real_home}}/jre/lib/security/java.security"
+    regexp: '(?<=)3DES_EDE_CBC, anon, NULL(?<=)'
+    replace: "DES40_CBC, RC4_40"
+  when: "'oud' in inventory_hostname"
+
